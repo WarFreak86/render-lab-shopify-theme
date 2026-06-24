@@ -1,22 +1,56 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
-      "type": "rl-hero"
+      "type": "rl-hero",
+      "settings": {
+        "eyebrow": "Premium metal art marketplace",
+        "heading": "Wall art that hits different",
+        "text": "Curated creator drops, sharp metal finishes, and bold artwork made for rooms that deserve more than blank walls.",
+        "primary_label": "Shop now",
+        "primary_url": "",
+        "secondary_label": "Limited drops",
+        "secondary_url": ""
+      }
     },
     "brand_rail": {
-      "type": "rl-brand-rail"
+      "type": "rl-brand-rail",
+      "settings": {
+        "heading": "Official-style collections and creator worlds"
+      }
     },
     "featured": {
-      "type": "rl-featured-collection"
+      "type": "rl-featured-collection",
+      "settings": {
+        "heading": "Browse posters you'll love",
+        "collection": "archive",
+        "product_limit": 8
+      }
     },
     "promo": {
-      "type": "rl-promo-mosaic"
+      "type": "rl-promo-mosaic",
+      "settings": {}
     },
     "features": {
-      "type": "rl-feature-cards"
+      "type": "rl-feature-cards",
+      "settings": {
+        "heading": "Why metal art from Render-Lab?",
+        "text": "Premium finish, clean mounting, and a heavyweight marketplace feel for every collection."
+      }
     },
     "category": {
-      "type": "rl-category-pills"
+      "type": "rl-category-pills",
+      "settings": {
+        "heading": "Shop by obsession"
+      }
     }
   },
   "order": [
