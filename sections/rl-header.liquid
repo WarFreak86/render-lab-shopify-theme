@@ -1,0 +1,40 @@
+<header class="rl-header">
+  <div class="rl-header__inner rl-page-width">
+    <button class="rl-icon-button rl-header__menu" type="button" data-menu-toggle aria-controls="RlMobileNav" aria-expanded="false" aria-label="{{ 'accessibility.menu' | t }}">
+      {% render 'icon', name: 'menu' %}
+    </button>
+    <a class="rl-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      <span>Render</span><span>Lab</span>
+    </a>
+    <nav class="rl-header__nav" aria-label="Primary">
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    </nav>
+    <form class="rl-header__search" action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search_placeholder' | t }}">
+      <button type="submit" aria-label="{{ 'accessibility.search' | t }}">{% render 'icon', name: 'search' %}</button>
+    </form>
+    <button class="rl-icon-button" type="button" data-cart-open aria-label="{{ 'accessibility.cart' | t }}">
+      {% render 'icon', name: 'cart' %}
+      <span class="rl-cart-count">{{ cart.item_count }}</span>
+    </button>
+  </div>
+  <nav class="rl-mobile-nav" id="RlMobileNav" hidden>
+    <form action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" placeholder="{{ 'general.search_placeholder' | t }}">
+    </form>
+    {% for link in section.settings.menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {% endfor %}
+  </nav>
+</header>
+
+{% schema %}
+{
+  "name": "Render-Lab header",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

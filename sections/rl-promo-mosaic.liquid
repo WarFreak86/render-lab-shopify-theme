@@ -1,0 +1,51 @@
+<section class="rl-section rl-promo-mosaic">
+  <div class="rl-page-width">
+    <div class="rl-promo-grid">
+      {% for block in section.blocks %}
+        <a class="rl-promo-card rl-promo-card--{{ block.settings.size }}" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 33vw, 100vw' }}
+          {% else %}
+            <div class="rl-promo-card__art"></div>
+          {% endif %}
+          <span></span>
+          <div>
+            <p>{{ block.settings.kicker }}</p>
+            <h3>{{ block.settings.title }}</h3>
+            <small>{{ block.settings.text }}</small>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Render-Lab promo mosaic",
+  "blocks": [
+    {
+      "type": "promo",
+      "name": "Promo card",
+      "settings": [
+        { "type": "select", "id": "size", "label": "Size", "options": [{ "value": "large", "label": "Large" }, { "value": "small", "label": "Small" }], "default": "small" },
+        { "type": "text", "id": "kicker", "label": "Kicker", "default": "New drop" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Limited editions" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Exclusive finishes, numbered runs, and art that disappears fast." },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Render-Lab promo mosaic",
+      "blocks": [
+        { "type": "promo", "settings": { "size": "large", "kicker": "Limited run", "title": "Collector drops" } },
+        { "type": "promo", "settings": { "title": "Custom prints", "text": "Turn your own image into gallery-grade metal wall art." } },
+        { "type": "promo", "settings": { "title": "Member perks", "text": "Early access, free shipping windows, and private drops." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+<section class="rl-cart-page rl-page-width">
+  <h1>{{ 'cart.title' | t }}</h1>
+  {% if cart.item_count == 0 %}
+    <p class="rl-empty">{{ 'cart.empty' | t }}</p>
+  {% else %}
+    <form action="{{ routes.cart_url }}" method="post" class="rl-cart-page__form">
+      {% for item in cart.items %}
+        <div class="rl-cart-page__item">
+          <a href="{{ item.url }}">
+            {% if item.image %}
+              {{ item.image | image_url: width: 220 | image_tag: loading: 'lazy' }}
+            {% endif %}
+          </a>
+          <div>
+            <h2>{{ item.product.title }}</h2>
+            <p>{{ item.variant.title }}</p>
+            <label>{{ 'products.quantity' | t }} <input type="number" name="updates[]" value="{{ item.quantity }}" min="0"></label>
+          </div>
+          <strong>{{ item.final_line_price | money }}</strong>
+        </div>
+      {% endfor %}
+      <div class="rl-cart-page__summary">
+        <span>{{ 'cart.subtotal' | t }}</span>
+        <strong>{{ cart.total_price | money }}</strong>
+        <button class="rl-button rl-button--secondary" type="submit">{{ 'actions.update' | t }}</button>
+        <button class="rl-button rl-button--accent" type="submit" name="checkout">{{ 'actions.checkout' | t }}</button>
+      </div>
+    </form>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Main cart",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "shopify theme dev --path .",
+    "dev:store": "shopify theme dev --path . --store"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^4.3.0"
+  }
+}

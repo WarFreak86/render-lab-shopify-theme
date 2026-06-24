@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product"
+    },
+    "related": {
+      "type": "rl-featured-collection"
+    }
+  },
+  "order": [
+    "main",
+    "related"
+  ]
+}

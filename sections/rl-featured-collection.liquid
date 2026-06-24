@@ -1,0 +1,40 @@
+<section class="rl-section rl-featured-products">
+  <div class="rl-page-width">
+    <div class="rl-section__head">
+      <h2>{{ section.settings.heading }}</h2>
+      {% if section.settings.collection %}
+        <a href="{{ section.settings.collection.url }}">{{ 'actions.view_all' | t }}</a>
+      {% endif %}
+    </div>
+    <div class="rl-product-grid">
+      {% if section.settings.collection and section.settings.collection.products_count > 0 %}
+        {% for product in section.settings.collection.products limit: section.settings.product_limit %}
+          {% render 'product-card', product: product %}
+        {% endfor %}
+      {% else %}
+        {% for i in (1..8) %}
+          <article class="rl-product-card">
+            <div class="rl-product-card__media">{{ 'product-' | append: i | placeholder_svg_tag: 'rl-product-card__placeholder' }}</div>
+            <div class="rl-product-card__body">
+              <span class="rl-product-card__title">Render-Lab artwork {{ i }}</span>
+              <p class="rl-product-card__meta">Creator edition</p>
+              <div class="rl-product-card__price">$89</div>
+            </div>
+          </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "RL featured collection",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Browse posters you'll love" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "product_limit", "label": "Products", "min": 4, "max": 12, "step": 1, "default": 8 }
+  ],
+  "presets": [{ "name": "RL featured collection" }]
+}
+{% endschema %}

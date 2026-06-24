@@ -1,0 +1,47 @@
+{% doc %}
+Renders the cart drawer shell and native cart form.
+@example
+{% render 'cart-drawer' %}
+{% enddoc %}
+<div class="rl-cart-overlay" data-cart-overlay hidden></div>
+<aside class="rl-cart-drawer" data-cart-drawer aria-hidden="true">
+  <div class="rl-cart-drawer__head">
+    <h2>{{ 'cart.title' | t }}</h2>
+    <button class="rl-icon-button" type="button" data-cart-close aria-label="{{ 'accessibility.close' | t }}">
+      {% render 'icon', name: 'close' %}
+    </button>
+  </div>
+  {% if cart.item_count == 0 %}
+    <p class="rl-cart-drawer__empty">{{ 'cart.empty' | t }}</p>
+  {% else %}
+    <form action="{{ routes.cart_url }}" method="post" class="rl-cart-form">
+      <div class="rl-cart-items">
+        {% for item in cart.items %}
+          <div class="rl-cart-item">
+            <a href="{{ item.url }}" class="rl-cart-item__image">
+              {% if item.image %}
+                {{ item.image | image_url: width: 180 | image_tag: loading: 'lazy' }}
+              {% endif %}
+            </a>
+            <div class="rl-cart-item__content">
+              <a href="{{ item.url }}">{{ item.product.title }}</a>
+              <span>{{ item.final_line_price | money }}</span>
+              <label>
+                {{ 'products.quantity' | t }}
+                <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+              </label>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="rl-cart-drawer__foot">
+        <div class="rl-cart-subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <strong>{{ cart.total_price | money }}</strong>
+        </div>
+        <button class="rl-button rl-button--secondary" type="submit">{{ 'actions.update' | t }}</button>
+        <button class="rl-button" type="submit" name="checkout">{{ 'actions.checkout' | t }}</button>
+      </div>
+    </form>
+  {% endif %}
+</aside>

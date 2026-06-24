@@ -1,0 +1,62 @@
+<section class="rl-product-page rl-page-width">
+  <div class="rl-product-page__gallery">
+    {% if product.media.size > 0 %}
+      {% for media in product.media limit: 6 %}
+        <div class="rl-product-media">
+          {{ media | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 990px) 50vw, 100vw' }}
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="rl-product-media">{{ 'product-1' | placeholder_svg_tag }}</div>
+    {% endif %}
+  </div>
+  <div class="rl-product-page__info">
+    <p class="rl-product-vendor">{{ product.vendor }}</p>
+    <h1>{{ product.title }}</h1>
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    {% form 'product', product, class: 'rl-product-form' %}
+      <div class="rl-product-price" data-product-price>{{ current_variant.price | money }}</div>
+      {% unless product.has_only_default_variant %}
+        <label class="rl-product-option">
+          <span>{{ 'products.variants' | t }}</span>
+          <select name="id" data-variant-select>
+            {% for variant in product.variants %}
+              <option
+                value="{{ variant.id }}"
+                data-price="{{ variant.price | money }}"
+                data-available="{% if variant.available %}true{% else %}false{% endif %}"
+                {% if variant == current_variant %}selected{% endif %}
+              >
+                {{ variant.title }}
+              </option>
+            {% endfor %}
+          </select>
+        </label>
+      {% else %}
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+      {% endunless %}
+      <label class="rl-product-option">
+        <span>{{ 'products.quantity' | t }}</span>
+        <input type="number" name="quantity" value="1" min="1">
+      </label>
+      <button class="rl-button rl-button--accent" type="submit" data-product-submit {% unless current_variant.available %}disabled{% endunless %}>
+        {% if current_variant.available %}
+          {{ 'actions.add_to_cart' | t }}
+        {% else %}
+          {{ 'actions.sold_out' | t }}
+        {% endif %}
+      </button>
+      {{ form | payment_button }}
+    {% endform %}
+    <div class="rl-product-description">
+      {{ product.description }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+<section class="rl-collection-page rl-page-width">
+  <header class="rl-listing-head">
+    <p class="rl-eyebrow">{{ collection.products_count }} designs</p>
+    <h1>{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div>{{ collection.description }}</div>
+    {% endif %}
+  </header>
+  {% paginate collection.products by section.settings.products_per_page %}
+    <div class="rl-product-grid">
+      {% for product in collection.products %}
+        {% render 'product-card', product: product %}
+      {% else %}
+        <p class="rl-empty">No products found.</p>
+      {% endfor %}
+    </div>
+    {% if paginate.pages > 1 %}
+      <nav class="rl-pagination" role="navigation">
+        {{ paginate | default_pagination }}
+      </nav>
+    {% endif %}
+  {% endpaginate %}
+</section>
+
+{% schema %}
+{
+  "name": "Main collection",
+  "settings": [
+    { "type": "range", "id": "products_per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }
+  ]
+}
+{% endschema %}

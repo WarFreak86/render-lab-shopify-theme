@@ -1,0 +1,30 @@
+<section class="rl-search-page rl-page-width">
+  <header class="rl-listing-head">
+    <h1>{{ 'accessibility.search' | t }}</h1>
+    <form class="rl-search-page__form" action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search_placeholder' | t }}">
+      <button class="rl-button rl-button--accent" type="submit">{{ 'accessibility.search' | t }}</button>
+    </form>
+  </header>
+  {% paginate search.results by 24 %}
+    <div class="rl-product-grid">
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% render 'product-card', product: item %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% if paginate.pages > 1 %}
+      <nav class="rl-pagination" role="navigation">
+        {{ paginate | default_pagination }}
+      </nav>
+    {% endif %}
+  {% endpaginate %}
+</section>
+
+{% schema %}
+{
+  "name": "Main search",
+  "settings": []
+}
+{% endschema %}

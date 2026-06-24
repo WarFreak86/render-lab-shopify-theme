@@ -1,0 +1,31 @@
+[
+  {
+    "name": "t:settings.theme.name",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background",
+        "label": "t:settings.theme.background",
+        "default": "#10111a"
+      },
+      {
+        "type": "color",
+        "id": "panel",
+        "label": "t:settings.theme.panel",
+        "default": "#171923"
+      },
+      {
+        "type": "color",
+        "id": "accent",
+        "label": "t:settings.theme.accent",
+        "default": "#f2552c"
+      },
+      {
+        "type": "color",
+        "id": "button",
+        "label": "t:settings.theme.button",
+        "default": "#ffffff"
+      }
+    ]
+  }
+]

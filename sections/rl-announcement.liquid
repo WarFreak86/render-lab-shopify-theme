@@ -1,0 +1,20 @@
+<section class="rl-announcement" style="--accent: {{ section.settings.accent_color }};">
+  <div class="rl-announcement__inner">
+    <span>{{ section.settings.text }}</span>
+    {% if section.settings.link_label != blank %}
+      <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Render-Lab announcement",
+  "settings": [
+    { "type": "text", "id": "text", "label": "Message", "default": "Summer drop: up to 30% off selected wall art" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Shop the sale" },
+    { "type": "url", "id": "link_url", "label": "Link" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#f2552c" }
+  ]
+}
+{% endschema %}

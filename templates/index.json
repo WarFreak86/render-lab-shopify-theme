@@ -1,0 +1,30 @@
+{
+  "sections": {
+    "hero": {
+      "type": "rl-hero"
+    },
+    "brand_rail": {
+      "type": "rl-brand-rail"
+    },
+    "featured": {
+      "type": "rl-featured-collection"
+    },
+    "promo": {
+      "type": "rl-promo-mosaic"
+    },
+    "features": {
+      "type": "rl-feature-cards"
+    },
+    "category": {
+      "type": "rl-category-pills"
+    }
+  },
+  "order": [
+    "hero",
+    "brand_rail",
+    "featured",
+    "promo",
+    "features",
+    "category"
+  ]
+}

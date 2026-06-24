@@ -1,0 +1,59 @@
+<footer class="rl-footer">
+  <div class="rl-page-width rl-footer__top">
+    <div>
+      <a class="rl-logo" href="{{ routes.root_url }}"><span>Render</span><span>Lab</span></a>
+      <p>{{ section.settings.text }}</p>
+      {% form 'customer', class: 'rl-newsletter' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label for="NewsletterEmail">{{ 'general.newsletter' | t }}</label>
+        <div>
+          <input id="NewsletterEmail" type="email" name="contact[email]" placeholder="{{ 'general.newsletter_email' | t }}" required>
+          <button class="rl-button rl-button--accent" type="submit">{{ 'general.newsletter_submit' | t }}</button>
+        </div>
+      {% endform %}
+    </div>
+    <div class="rl-footer__menus">
+      {% for block in section.blocks %}
+        <nav {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.heading }}</h3>
+          {% for link in block.settings.menu.links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </nav>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="rl-page-width rl-footer__bottom">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</span>
+    <span>{{ powered_by_link }}</span>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Render-Lab footer",
+  "settings": [
+    { "type": "textarea", "id": "text", "label": "Text", "default": "A dark premium marketplace for creator-led metal wall art, custom prints, and limited drops." }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Render-Lab footer",
+      "blocks": [
+        { "type": "menu", "settings": { "heading": "Shop" } },
+        { "type": "menu", "settings": { "heading": "Creators" } },
+        { "type": "menu", "settings": { "heading": "Support" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

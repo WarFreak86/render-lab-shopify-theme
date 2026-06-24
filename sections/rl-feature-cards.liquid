@@ -1,0 +1,52 @@
+<section class="rl-section rl-feature-cards">
+  <div class="rl-page-width">
+    <div class="rl-feature-cards__head">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="rl-feature-cards__grid">
+      {% for block in section.blocks %}
+        <article class="rl-feature-card" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 720 | image_tag: loading: 'lazy' }}
+          {% else %}
+            <div class="rl-feature-card__fallback"></div>
+          {% endif %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Render-Lab feature cards",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why metal art from Render-Lab?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Premium finish, clean mounting, and a heavyweight marketplace feel for every collection." }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Damage-resistant metal print" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Crisp color and durable surfaces built for everyday rooms." },
+        { "type": "image_picker", "id": "image", "label": "Image" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Render-Lab feature cards",
+      "blocks": [
+        { "type": "feature", "settings": { "title": "Vivid metal finish" } },
+        { "type": "feature", "settings": { "title": "Wall-safe mounting" } },
+        { "type": "feature", "settings": { "title": "Gift-ready drops" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

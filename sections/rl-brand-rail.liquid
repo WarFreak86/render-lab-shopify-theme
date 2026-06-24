@@ -1,0 +1,50 @@
+<section class="rl-section rl-brand-rail">
+  <div class="rl-page-width">
+    <h2>{{ section.settings.heading }}</h2>
+    <div class="rl-brand-rail__track">
+      {% for block in section.blocks %}
+        <a class="rl-brand-tile" href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+          {% if block.settings.image %}
+            {{ block.settings.image | image_url: width: 180 | image_tag: loading: 'lazy' }}
+          {% else %}
+            <span>{{ block.settings.title | slice: 0, 2 }}</span>
+          {% endif %}
+          <small>{{ block.settings.title }}</small>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Render-Lab brand rail",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Official-style collections and creator worlds" }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand tile",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Cyber Worlds" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "url", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Render-Lab brand rail",
+      "blocks": [
+        { "type": "brand", "settings": { "title": "Gaming" } },
+        { "type": "brand", "settings": { "title": "Anime" } },
+        { "type": "brand", "settings": { "title": "Sci-Fi" } },
+        { "type": "brand", "settings": { "title": "Movies" } },
+        { "type": "brand", "settings": { "title": "Nature" } },
+        { "type": "brand", "settings": { "title": "Abstract" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
