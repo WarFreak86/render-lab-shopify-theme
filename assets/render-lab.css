@@ -94,10 +94,9 @@ svg { width: 20px; height: 20px; fill: currentColor; }
 .rl-hero__poster-stage::before { content: ""; position: absolute; inset: 8% 4% 0 auto; width: min(58vw, 920px); background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12), transparent 64%); filter: blur(20px); opacity: 0.7; }
 .rl-hero-card { --x: 70%; --rotation: 0deg; --offset-y: 0px; --card-width: 300px; position: absolute; left: var(--x); top: 50%; z-index: var(--z, 1); width: clamp(180px, 22vw, var(--card-width)); aspect-ratio: 0.68; display: block; overflow: hidden; border-radius: 6px; background: linear-gradient(145deg, #2a2e3c, #12141d); border: 1px solid rgba(255, 255, 255, 0.16); box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55), 0 2px 0 rgba(255, 255, 255, 0.08) inset; transform: translate(-50%, calc(-50% + var(--offset-y))) rotate(var(--rotation)); transition: transform 220ms ease, box-shadow 220ms ease; }
 .rl-hero-card:hover { transform: translate(-50%, calc(-50% + var(--offset-y) - 8px)) rotate(var(--rotation)) scale(1.025); box-shadow: 0 38px 90px rgba(0, 0, 0, 0.64), 0 2px 0 rgba(255, 255, 255, 0.1) inset; }
-.rl-hero-card--1 { --x: 61%; --z: 2; }
-.rl-hero-card--2 { --x: 73%; --z: 4; }
-.rl-hero-card--3 { --x: 83%; --z: 3; }
-.rl-hero-card--4 { --x: 53%; --z: 1; }
+.rl-hero-card--1 { --x: 61%; --z: 2; --rotation: -6deg; --offset-y: 32px; --card-width: 300px; }
+.rl-hero-card--2 { --x: 73%; --z: 4; --rotation: 3deg; --offset-y: -42px; --card-width: 330px; }
+.rl-hero-card--3 { --x: 83%; --z: 3; --rotation: -1deg; --offset-y: 70px; --card-width: 280px; }
 .rl-hero-card__image, .rl-hero-card__placeholder { width: 100%; height: 100%; object-fit: cover; }
 .rl-hero-card__placeholder { position: relative; display: block; background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 34%), radial-gradient(circle at 66% 24%, rgba(242, 85, 44, 0.55), transparent 18%), radial-gradient(circle at 30% 68%, rgba(0, 94, 255, 0.34), transparent 24%), linear-gradient(145deg, #303443, #11131a); }
 .rl-hero-card__placeholder::after { content: ""; position: absolute; inset: 14%; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 4px; }
@@ -226,7 +225,6 @@ svg { width: 20px; height: 20px; fill: currentColor; }
   .rl-hero-card--1 { --x: 28%; }
   .rl-hero-card--2 { --x: 52%; }
   .rl-hero-card--3 { --x: 74%; }
-  .rl-hero-card--4 { --x: 47%; top: 44%; }
   .rl-hero__overlay { background: linear-gradient(0deg, rgba(10, 11, 17, 0.98) 8%, rgba(10, 11, 17, 0.82) 44%, rgba(10, 11, 17, 0.24)); }
   .rl-hero__content { padding-bottom: 36px; }
   .rl-hero h1 { font-size: 52px; }
