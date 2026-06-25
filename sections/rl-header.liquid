@@ -8,7 +8,12 @@
     </a>
     <nav class="rl-header__nav" aria-label="Primary">
       {% for link in section.settings.menu.links %}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        {% assign link_title = link.title | downcase %}
+        {% if link_title == 'archive' %}
+          <a href="{{ routes.collections_url }}">{{ link.title }}</a>
+        {% else %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endif %}
       {% endfor %}
     </nav>
     <form class="rl-header__search" action="{{ routes.search_url }}" method="get" role="search">
@@ -25,7 +30,12 @@
       <input type="search" name="q" placeholder="{{ 'general.search_placeholder' | t }}">
     </form>
     {% for link in section.settings.menu.links %}
-      <a href="{{ link.url }}">{{ link.title }}</a>
+      {% assign link_title = link.title | downcase %}
+      {% if link_title == 'archive' %}
+        <a href="{{ routes.collections_url }}">{{ link.title }}</a>
+      {% else %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endif %}
     {% endfor %}
   </nav>
 </header>
