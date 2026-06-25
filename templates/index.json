@@ -17,12 +17,29 @@
         "text": "Curated creator drops, sharp metal finishes, and bold artwork made for rooms that deserve more than blank walls.",
         "primary_label": "Shop now",
         "primary_url": "",
+        "show_secondary_button": true,
         "secondary_label": "Limited drops",
-        "secondary_url": ""
+        "secondary_url": "",
+        "card_1_image": "shopify://shop_images/warfreak86_The_starry_night_style_urban_skull_--ar_916_--raw__cb7f8221-fff8-4442-b961-0548b0f4ca9c_2.png",
+        "card_1_alt_text": "",
+        "card_1_link": "",
+        "card_2_image": "shopify://shop_images/product_shot_of_a_hoodie_202606110256.jpg",
+        "card_2_alt_text": "",
+        "card_2_link": "",
+        "card_3_image": "shopify://shop_images/acb430e5-f42b-4263-97c0-a612a1a6707f.png",
+        "card_3_alt_text": "",
+        "card_3_link": "",
+        "height_desktop": 760,
+        "height_mobile": 680,
+        "overlay_opacity": 65,
+        "background_style": "cinematic",
+        "content_alignment": "left",
+        "text_max_width": 760
       }
     },
     "brand_rail": {
       "type": "rl-brand-rail",
+      "disabled": true,
       "settings": {
         "heading": "Official-style collections and creator worlds"
       }
@@ -31,16 +48,43 @@
       "type": "rl-featured-collection",
       "settings": {
         "heading": "Browse posters you'll love",
-        "collection": "archive",
+        "collection": "best-sellers",
         "product_limit": 8
       }
     },
     "promo": {
       "type": "rl-promo-mosaic",
+      "blocks": {
+        "promo_rX8qUf": {
+          "type": "promo",
+          "settings": {
+            "size": "small",
+            "kicker": "New drop",
+            "title": "Limited editions",
+            "text": "Exclusive finishes, numbered runs, and art that disappears fast.",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "promo_rX8qUf"
+      ],
       "settings": {}
     },
     "features": {
       "type": "rl-feature-cards",
+      "blocks": {
+        "feature_bzzFDH": {
+          "type": "feature",
+          "settings": {
+            "title": "Damage-resistant metal print",
+            "text": "Crisp color and durable surfaces built for everyday rooms."
+          }
+        }
+      },
+      "block_order": [
+        "feature_bzzFDH"
+      ],
       "settings": {
         "heading": "Why metal art from Render-Lab?",
         "text": "Premium finish, clean mounting, and a heavyweight marketplace feel for every collection."
